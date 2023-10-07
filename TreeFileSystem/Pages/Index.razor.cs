@@ -1,10 +1,19 @@
-﻿using System.Diagnostics;
+﻿using DevExpress.Blazor;
+using System.Diagnostics;
 
 namespace TreeFileSystem.Pages
 {
     public partial class Index
     {
         IEnumerable<FileSystemItem>? items;
+        string SelectedGroup = "none";
+        void SelectionChanged(TreeViewNodeEventArgs e)
+        {
+
+            FileSystemItem CurrentNode= (FileSystemItem)e.NodeInfo?.DataItem;
+            SelectedGroup = e.NodeInfo?.Text;
+        }
+
         protected override void OnInitialized()
         {
             base.OnInitialized();
